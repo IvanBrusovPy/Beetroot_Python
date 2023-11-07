@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=DM+Serif+Display:ital@0;1&display=swap');
+body {
+  background-color: #ffffff;
+}
+
+.page-title{
+    font-family: 'DM Serif Display', serif;
+    font-weight: 1;
+    color: #171F4C;
+
+}
+.note-title{
+    color: #1786F9;
+    font-family:'DM Sans', sans-serif;
+}
+
+.note-text{
+    color: #0C1C46;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.note-category{
+    background: #1786F9;
+    color: white;
+}
+
+.gg-remove{
+    color: #e31111;
+}
+
+.gg-erase{
+    color: #1265c0;
+}
+
+
+
+.add-new{
+    background: #1786F9;
+}
+
+.add-text{
+    color: white;
+}
+
+.btn {
+  border-color:#1786F9;
+}
+
+.btn:hover {
+  background-color: #1786F9;
+}
+
+.form-group{
+border-radius: 2rem;
+background: #e0e0e0;
+box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;
+    padding: 3rem;
+}

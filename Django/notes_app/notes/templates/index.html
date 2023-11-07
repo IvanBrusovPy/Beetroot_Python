@@ -1,0 +1,80 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My notes</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://css.gg/css?=|add|erase|remove|search" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<script>
+    function filter_note(sel) {
+    $('form[name=filter_form]').submit();
+}
+</script>
+<body>
+    <div class="container-fluid ">
+{#        <h1 class="page-title mt-5 mb- text-center">My notes</h1>#}
+{#        <button class="btn btn-outline-primary btn-lg" type="submit" formaction="/notes/add/">Add new </button>#}
+{#        #}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <a class="navbar-brand page-title" href="/notes/home/">My notes</a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/notes/add/">Add note</a>
+        </li>
+         <span class="navbar-text px-2">Categories:</span>
+        <li class="nav-item">
+            <form action='/notes/filter/' method="GET" name="filter_form">
+                {% csrf_token %}
+                <select class="form-select" aria-label="Default select example" onchange="filter_note(this)" name="category">
+                    <option selected>All</option>
+                    {% for category in categories %}
+                       <option>{{ category.title }}</option>>
+                     {% endfor %}
+                </select>
+            </form>
+        </li>
+      </ul>
+      <form class="d-flex" method="get" action="/notes/search/">
+          <input class="form-control me-2" type="search" name="title" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+    </div>
+  </div>
+</nav>
+
+        <div class="d-flex justify-content-center ">
+            <div class="row ">
+                {% for note in notes_list %}
+                    <div class="col">
+                        <div class="card" style="width: 25rem;">
+                              <div class="card-body">
+                                  <div class="d-flex align-items-center align-self-center note-menu justify-content-end gap-3">
+                                      <a href="/notes/edit/{{ note.id }}/"><i class="gg-erase"></i></a>
+                                      <a href="/notes/delete/{{ note.id }}/"><i class="gg-remove"></i></a>
+                                  </div>
+                                <h3 class="card-title note-title">{{ note.title }}</h3>
+                                <h4 class="card-subtitle mb-2 text-muted note-text">{{ note.reminder }}</h4>
+                                <h6 class="card-text note-text">{{ note.text }}</h6>
+                              </div>
+                                <div class="card-footer note-category"><h6>{{ note.category.title }}</h6></div>
+                            </div>
+                    </div>
+                {% endfor %}
+        </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>
+

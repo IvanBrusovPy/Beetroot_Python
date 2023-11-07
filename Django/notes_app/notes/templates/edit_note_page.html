@@ -1,0 +1,28 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit note</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="container-fluid ">
+            <div class="text-center">
+                <h1 class="page-title mt-5 mb-3">Edit note</h1>
+                <a href="/notes/home/"><button class="btn btn-outline-primary mb-5 ">Back</button></a>
+            </div>
+        <div class="form-group">
+            <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-outline-primary">Save</button>
+        </form>
+        </div>
+    </div>
+</body>
+</html>
